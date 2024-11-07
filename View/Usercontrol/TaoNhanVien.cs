@@ -16,9 +16,17 @@ namespace View.Usercontrol
     public partial class TaoNhanVien : UserControl
     {
         UserService userService = new UserService();
+        public event EventHandler SwitchToQuanLyNhanVien_CEO;
+
         public TaoNhanVien()
         {
             InitializeComponent();
+        }
+
+        public void showToast(string type, string message)
+        {
+            ToastForm toastForm = new ToastForm(type, message);
+            toastForm.Show();
         }
 
         public static string hashPassword(string password)
@@ -43,22 +51,24 @@ namespace View.Usercontrol
 
         private void buttonCreateUser_Click(object sender, EventArgs e)
         {
-            if(textboxFullname.Text == "" && textBoxPassword.Text == "" && textboxGender.Text == "" && textboxEmail.Text == "" && textboxRole.Text == "")
-            {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin");
-            }
-            else
-            {
-                string result = userService.createUser(hashPassword(textBoxPassword.Text), textboxFullname.Text, textboxGender.Text, textboxEmail.Text, textboxRole.Text); 
-                if(result.Equals("Thêm tài khoản thành công"))
-                {
-                    MessageBox.Show("Tạo tài khoản thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Tạo tài khoản thất bại");
-                }
-            }
+            //if(textboxFullname.Text == "" && textBoxPassword.Text == "" && textboxGender.Text == "" && textboxEmail.Text == "" && textboxRole.Text == "")
+            //{
+            //    MessageBox.Show("Vui lòng điền đầy đủ thông tin");
+            //}
+            //else
+            //{
+            //    string result = userService.createUser(hashPassword(textBoxPassword.Text), textboxFullname.Text, textboxGender.Text, textboxEmail.Text, textboxRole.Text); 
+            //    if(result.Equals("Thêm tài khoản thành công"))
+            //    {
+            //        MessageBox.Show("Tạo tài khoản thành công");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Tạo tài khoản thất bại");
+            //    }
+            //}
+            SwitchToQuanLyNhanVien_CEO?.Invoke(this, EventArgs.Empty);
+            showToast("SUCCESS", "This is a Success");
         }
     }
 }

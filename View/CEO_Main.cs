@@ -16,7 +16,27 @@ namespace View
     public partial class CEO_Main : Form
     {
         private string UserID;
+
         UserService userService = new UserService();
+
+        TrangChu trangchu = new TrangChu();
+        ThongBao thongBao = new ThongBao();
+        DuAn duAn = new DuAn();
+        TaoDuAn taoDuAn = new TaoDuAn();
+        HoSo hoSo = new HoSo();
+        TaoHoSo taoHoSo = new TaoHoSo();
+        TaiLieu taiLieu = new TaiLieu();
+        TaoTailieu taoTailieu = new TaoTailieu();
+        PhongBan phongban = new PhongBan();
+        TaoPhongBan taoPhongBan = new TaoPhongBan();
+        Nhom_CEO nhom_CEO = new Nhom_CEO();
+        TaoNhom taoNhom = new TaoNhom();
+        ThemNhanVienVaoPhongBan themNhanVienVaoPhongBan = new ThemNhanVienVaoPhongBan();
+        TrongNhom trongNhom = new TrongNhom();
+        QuanLyQuyenTruyCap quanLyQuyenTruyCap = new QuanLyQuyenTruyCap();
+        ThongTinCaNhan thongTinCaNhan = new ThongTinCaNhan();
+        QuanLyNhanVien_CEO quanlynhanvien = new QuanLyNhanVien_CEO();
+        TaoNhanVien taoNhanVien = new TaoNhanVien();
 
         public CEO_Main()
         {
@@ -45,8 +65,6 @@ namespace View
         {
             ResetButtonColors();
             btnTrangChu.FillColor = Color.DarkGray;
-            TrangChu trangchu = new TrangChu();
-
 
             ShowUserControl(trangchu);
         }
@@ -55,7 +73,6 @@ namespace View
         {
             ResetButtonColors();
             BtnThongBao.FillColor = Color.DarkGray;
-            ThongBao thongBao = new ThongBao();
 
             ShowUserControl(thongBao);
         }
@@ -64,38 +81,31 @@ namespace View
         {
             ResetButtonColors();
             BtnDuAn.FillColor = Color.DarkGray;
-            DuAn duAn = new DuAn();
             duAn.SwitchToTaoDuAn += duAn_SwitchToTaoDuAn;
             duAn.SwitchToHoSo += duAn_SwitchToHoSo;
-
             ShowUserControl(duAn);
         }
         private void duAn_SwitchToTaoDuAn(object sender, EventArgs e)
         {
-            TaoDuAn taoDuAn = new TaoDuAn();
             ShowUserControl(taoDuAn);
         }
         private void duAn_SwitchToHoSo(object sender, EventArgs e)
         {
-            HoSo hoSo = new HoSo();
             hoSo.SwitchToTaoHoSo += hoSo_SwitchToTaoHoSo;
             hoSo.SwitchToTaiLieu += hoSo_SwitchToTaiLieu;
             ShowUserControl(hoSo);
         }
         private void hoSo_SwitchToTaoHoSo(object sender, EventArgs e)
         {
-            TaoHoSo taoHoSo = new TaoHoSo();
             ShowUserControl(taoHoSo);
         }
         private void hoSo_SwitchToTaiLieu(object sender, EventArgs e)
         {
-            TaiLieu taiLieu = new TaiLieu();
             taiLieu.SwitchToTaoTaiLieu += taiLieu_SwitchToTaoTaiLieu;
             ShowUserControl(taiLieu);
         }
         private void taiLieu_SwitchToTaoTaiLieu(object sender, EventArgs e)
         {
-            TaoTailieu taoTailieu = new TaoTailieu();
             ShowUserControl(taoTailieu);
         }
 
@@ -103,7 +113,6 @@ namespace View
         {
             ResetButtonColors();
             BtnPhongBan.FillColor = Color.DarkGray;
-            PhongBan phongban = new PhongBan();
 
             phongban.SwitchToTaoPhongBan += phongBan_SwitchToTaoPhongBan;
             phongban.SwitchToNhom_CEO += phongBan_SwitchToNhom_CEO;
@@ -112,12 +121,10 @@ namespace View
         }
         private void phongBan_SwitchToTaoPhongBan(object sender, EventArgs e)
         {
-            TaoPhongBan taoPhongBan = new TaoPhongBan();
             ShowUserControl(taoPhongBan);
         }
         private void phongBan_SwitchToNhom_CEO(object sender, EventArgs e)
         {
-            Nhom_CEO nhom_CEO = new Nhom_CEO();
             nhom_CEO.SwitchToTaoNhom += nhomCEO_SwitchToTaoNhom;
             nhom_CEO.SwitchToThemThanhVienVaoPhongBan += nhomCEO_SwitchToThemNhanVienVaoPhongBan;
             nhom_CEO.SwitchToTrongNhom += nhomCEO_SwitchToTrongNhom;
@@ -126,17 +133,14 @@ namespace View
         }
         private void nhomCEO_SwitchToTaoNhom(object sender, EventArgs e)
         {
-            TaoNhom taoNhom = new TaoNhom();
             ShowUserControl(taoNhom);
         }
         private void nhomCEO_SwitchToThemNhanVienVaoPhongBan(object sender, EventArgs e)
         {
-            ThemNhanVienVaoPhongBan themNhanVienVaoPhongBan = new ThemNhanVienVaoPhongBan();
             ShowUserControl(themNhanVienVaoPhongBan);
         }
         private void nhomCEO_SwitchToTrongNhom(object sender, EventArgs e)
         {
-            TrongNhom trongNhom = new TrongNhom();
             ShowUserControl(trongNhom);
         }
 
@@ -144,8 +148,6 @@ namespace View
         {
             ResetButtonColors();
             BtnQuanLyTruyCap.FillColor = Color.DarkGray;
-            QuanLyQuyenTruyCap quanLyQuyenTruyCap = new QuanLyQuyenTruyCap();
-
             ShowUserControl(quanLyQuyenTruyCap);
         }
 
@@ -153,8 +155,6 @@ namespace View
         {
             ResetButtonColors();
             BtnCaNhan.FillColor = Color.DarkGray;
-            ThongTinCaNhan thongTinCaNhan = new ThongTinCaNhan();
-
             ShowUserControl(thongTinCaNhan);
         }
 
@@ -186,7 +186,6 @@ namespace View
                 MessageBox.Show("User is null");
             }
 
-            TrangChu trangchu = new TrangChu();
             ShowUserControl(trangchu);
         }
 
@@ -199,14 +198,18 @@ namespace View
         {
             ResetButtonColors();
             BtnQuanLyNhanVien.FillColor = Color.DarkGray;
-            QuanLyNhanVien_CEO quanlynhanvien = new QuanLyNhanVien_CEO();
+
             quanlynhanvien.SwitchToTaoNhanVien += quanLyNhanVien_SwitchToTaoNhanVien;
             ShowUserControl(quanlynhanvien);
         }
         private void quanLyNhanVien_SwitchToTaoNhanVien(object sender, EventArgs e)
         {
-            TaoNhanVien taoNhanVien = new TaoNhanVien();
+            taoNhanVien.SwitchToQuanLyNhanVien_CEO += taoNhanVien_SwitchToQuanLyNhanVien_CE0;
             ShowUserControl(taoNhanVien);
+        }
+        private void taoNhanVien_SwitchToQuanLyNhanVien_CE0(object sender, EventArgs e)
+        {
+            ShowUserControl(quanlynhanvien);
         }
 
         private void buttonThoat_Click(object sender, EventArgs e)
